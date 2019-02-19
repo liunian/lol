@@ -27,7 +27,7 @@ const chart = new G2.Chart({
 	// width: 800,
 	forceFit: true,
 	height: 500,
-	padding: { left: 50, right: 50 }
+	padding: { left: 50, right: 50, top: 0, bottom: 60 }
 });
 chart.scale({
 	winLoose: {
