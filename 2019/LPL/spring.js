@@ -26,7 +26,8 @@ const chart = new G2.Chart({
 	container: 'ranking',
 	// width: 800,
 	forceFit: true,
-	height: 500
+	height: 500,
+	padding: { left: 40, right: 40 }
 });
 chart.scale({
 	winLoose: {
