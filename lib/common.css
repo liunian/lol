@@ -1,6 +1,8 @@
 :root {
     --divider-color: rgba(0,0,0,.12);
     --block-space: 15px;
+    --disabled-bg: #aaa;
+    --table-header-bg: #eaecf0;
 }
 
 .container--row {
@@ -11,4 +13,18 @@
 .panel--header {
     margin-bottom: var(--block-space);
     border-bottom: 1px solid var(--divider-color);
+}
+
+.cell__disabled {
+    background: var(--disabled-bg);
+    border-color: var(--disabled-bg);
+}
+
+.cell__head {
+    background: var(--table-header-bg);
+    border-color: var(--table-header-bg);
+}
+
+.mui-table {
+    border-collapse: collapse;
 }

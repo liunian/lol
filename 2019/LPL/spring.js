@@ -27,7 +27,7 @@ const chart = new G2.Chart({
 	// width: 800,
 	forceFit: true,
 	height: 500,
-	padding: { left: 40, right: 40 }
+	padding: { left: 50, right: 50 }
 });
 chart.scale({
 	winLoose: {
@@ -63,3 +63,5 @@ function weekRangeHandler(evt) {
 
 $week.addEventListener('change', weekRangeHandler, false);
 $week.addEventListener('input', weekRangeHandler, false);
+
+document.getElementById('J-detail').innerHTML = generateMatchDetails(TEAMS, MATCHES);
