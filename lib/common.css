@@ -3,6 +3,8 @@
     --block-space: 15px;
     --disabled-bg: #aaa;
     --table-header-bg: #eaecf0;
+    --success-color: #2BBF30;
+    --loose-color: #f5222d;
 }
 
 .container--row {
@@ -23,6 +25,18 @@
 .cell__head {
     background: var(--table-header-bg);
     border-color: var(--table-header-bg);
+}
+
+.cell__success {
+    background: var(--success-color);
+}
+
+.cell__loose {
+    background: var(--loose-color);
+}
+
+.cell__pending {
+    font-size: 12px;
 }
 
 .mui-table {
