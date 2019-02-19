@@ -1,0 +1,14 @@
+:root {
+    --divider-color: rgba(0,0,0,.12);
+    --block-space: 15px;
+}
+
+.container--row {
+    margin-top: var(--block-space);
+    margin-bottom: var(--block-space);
+}
+
+.panel--header {
+    margin-bottom: var(--block-space);
+    border-bottom: 1px solid var(--divider-color);
+}

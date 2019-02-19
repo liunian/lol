@@ -6,15 +6,40 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 	<title>LPL 2019 Spring</title>
 	<link rel="stylesheet" href="https://gw.alipayobjects.com/os/lib/muicss/0.9.41/dist/css/mui.min.css" />
+	<link rel="stylesheet" href="../../lib/common.css" />
 </head>
 <body>
 
-	<div class="mui-container">
-		<div id="ranking"></div>
+	<header class="mui-appbar mui--z1">
+		<table width="100%">
+			<tr style="vertical-align:middle;">
+				<td class="mui--appbar-height"><div class="mui--text-title">LPL 2019 Spring</div></td>
+			</tr>
+		</table>
+	</header>
 
+	<div class="mui-container-fluid container--row">
+		<div class="mui-panel">
+			<form class="mui-form">
+				<label>
+					截止比赛周：
+					<input class="mui--align-middle" type="range" id="J-week" name="volume" min="1" max="1" />
+					<span style="margin-left: 15px;" id="J-week-val">1</span>
+				</label>
+			</form>
+		</div>
+
+		<div class="mui-panel">
+			<div class="panel--header">
+				<div class="mui--text-headline">队伍积分</div>
+			</div>
+			<div id="ranking"></div>
+		</div>
+
+		<div class="mui-panel">
+			这仅是个人根据赛事数据梳理的图表，实际结果以官方数据为准。
+		</div>
 	</div>
-
-
 
 	<script src="https://gw.alipayobjects.com/os/lib/antv/g2/3.4.10/dist/g2.min.js"></script>
 	<script src="https://gw.alipayobjects.com/os/lib/antv/data-set/0.10.1/dist/data-set.min.js"></script>
