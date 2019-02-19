@@ -32,7 +32,7 @@ const chart = new G2.Chart({
 chart.scale({
 	winLoose: {
 		formatter(val) {
-			return val === 'matchWin' ? '赢场' : '输场';
+			return val === 'matchWin' ? '胜' : '负';
 		}
 	},
 	point: {
@@ -50,6 +50,12 @@ chart.intervalStack().position('team*point')
 		return {
 			position: 'middle',
 			offset: 0
+		};
+	})
+	.tooltip('point*winLoose*gameWin*gameLoose', (point, winLoose, gameWin, gameLoose) => {
+		return {
+			name: winLoose === 'matchWin' ? '胜(净胜)' : '负(净负)',
+			value: winLoose === 'matchWin' ? `${point}(${gameWin})` : `${point}(${gameLoose})`
 		};
 	});
 chart.render();
