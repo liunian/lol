@@ -31,14 +31,25 @@
 
 		<div class="mui-panel">
 			<div class="panel--header">
-				<div class="mui--text-headline">队伍积分</div>
+				<span class="mui--text-headline">队伍积分</span>
+
+				<span>
+					最后更新的比赛：<span id="J-last-match">-</span>
+				</span>
 			</div>
 			<div id="ranking"></div>
 		</div>
 
+		<div class="mui-panel" id="J-cur-next-play-day" style="display: none;">
+			<div class="panel--header">
+				<span class="mui--text-headline J-title"></span>
+			</div>
+			<div class="J-con"></div>
+		</div>
+
 		<div class="mui-panel">
 			<div class="panel--header">
-				<div class="mui--text-headline">单循环赛</div>
+				<span class="mui--text-headline">单循环赛</span>
 			</div>
 			<table id="J-detail" class="mui-table mui-table--bordered"></table>
 		</div>

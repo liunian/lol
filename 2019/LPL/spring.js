@@ -71,3 +71,45 @@ $week.addEventListener('change', weekRangeHandler, false);
 $week.addEventListener('input', weekRangeHandler, false);
 
 document.getElementById('J-detail').innerHTML = generateMatchDetails(TEAMS, MATCHES);
+
+// last updated match info
+function updateLastMatchInfo(matches, ele) {
+	const lastIndex = matches.findIndex(match => !match[4]) - 1;
+	const lastMatch = lastIndex === -2 ? matches[matches.length - 1] : (lastIndex < 0 ? null : matches[lastIndex]);
+	if (lastMatch) {
+		ele.textContent = getMatchStr(lastMatch);
+	}
+}
+updateLastMatchInfo(MATCHES, document.getElementById('J-last-match'));
+
+// current or next play day info
+function updateNextMatchInfo(matches, ele) {
+	const now = moment();
+	let nextMatchDay;
+	let todayIsPlayDay = false;
+	const nextMatches = [];
+
+	for (let match of matches) {
+		const matchDate = match[3];
+		if (matchDate.isBefore(now, 'day')) continue;
+		if (matchDate.isSame(now, 'day')) {
+			nextMatches.push(match);
+			nextMatchDay = now;
+			todayIsPlayDay = true;
+			continue;
+		}
+
+		if (nextMatchDay && matchDate.isAfter(nextMatchDay, 'day')) break;
+
+		nextMatchDay = matchDate;
+		nextMatches.push(match);
+	}
+
+	if (!nextMatches.length) return;
+
+	ele.style.display = '';
+	ele.querySelector('.J-title').textContent = todayIsPlayDay ? '今日比赛' : '下个比赛日';
+	const content = nextMatches.map(m => `<div>${getMatchStr(m)}</div>`);
+	ele.querySelector('.J-con').innerHTML = content.join('');
+}
+updateNextMatchInfo(MATCHES, document.getElementById('J-cur-next-play-day'));
