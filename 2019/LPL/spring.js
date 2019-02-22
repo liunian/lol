@@ -86,16 +86,19 @@ updateLastMatchInfo(MATCHES, document.getElementById('J-last-match'));
 function updateNextMatchInfo(matches, ele) {
 	const now = moment();
 	let nextMatchDay;
-	let todayIsPlayDay = false;
+	let hasTodayMatches = false;
+	const todayMatches = [];
 	const nextMatches = [];
 
 	for (let match of matches) {
 		const matchDate = match[3];
 		if (matchDate.isBefore(now, 'day')) continue;
 		if (matchDate.isSame(now, 'day')) {
-			nextMatches.push(match);
-			nextMatchDay = now;
-			todayIsPlayDay = true;
+			todayMatches.push(match);
+			if (!match[4]) {
+				nextMatchDay = now;
+				hasTodayMatches = true;
+			}
 			continue;
 		}
 
@@ -105,10 +108,14 @@ function updateNextMatchInfo(matches, ele) {
 		nextMatches.push(match);
 	}
 
+	if (hasTodayMatches) {
+		nextMatches = todayMatches;
+	}
+
 	if (!nextMatches.length) return;
 
 	ele.style.display = '';
-	ele.querySelector('.J-title').textContent = todayIsPlayDay ? '今日比赛' : '下个比赛日';
+	ele.querySelector('.J-title').textContent = hasTodayMatches ? '今日比赛' : '下个比赛日';
 	const content = nextMatches.map(m => `<div>${getMatchStr(m)}</div>`);
 	ele.querySelector('.J-con').innerHTML = content.join('');
 }
