@@ -88,7 +88,7 @@ function updateNextMatchInfo(matches, ele) {
 	let nextMatchDay;
 	let hasTodayMatches = false;
 	const todayMatches = [];
-	const nextMatches = [];
+	let nextMatches = [];
 
 	for (let match of matches) {
 		const matchDate = match[3];
