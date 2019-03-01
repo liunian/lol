@@ -34,7 +34,7 @@ const chart = new G2.Chart({
 	container: 'ranking',
 	// width: 800,
 	forceFit: true,
-	height: 500,
+	height: 580,
 	padding: { left: 50, right: 50, top: 60, bottom: 80 }
 });
 chart.scale({
