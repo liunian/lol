@@ -161,3 +161,5 @@ function updateNextMatchInfo(matches, ele) {
 	ele.querySelector('.J-con').innerHTML = content.join('');
 }
 updateNextMatchInfo(MATCHES, document.getElementById('J-cur-next-play-day'));
+
+initTableCellFocus(document.getElementById('J-detail'));

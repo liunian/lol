@@ -42,3 +42,13 @@
 .mui-table {
     border-collapse: collapse;
 }
+
+.focus-rect {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 0 0 2px blue;
+    /* rgba(64, 169, 255, 0.75); */
+    user-select: none;
+    /* opacity: 0; */
+}
