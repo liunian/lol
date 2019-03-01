@@ -16,6 +16,14 @@ $weekVal.innerText = latestWeek;
 const ds = new DataSet();
 const dv = ds.createView().source(result.rankings.slice(0).reverse());
 dv.transform({
+	type: 'map',
+	callback(row) {
+		// 净胜场
+		row.goal = row.gameWin - row.gameLoose;
+		return row;
+	}
+});
+dv.transform({
 	type: 'fold',
 	fields: ['matchWin', 'matchLoose'],
 	key: 'winLoose',
@@ -27,7 +35,7 @@ const chart = new G2.Chart({
 	// width: 800,
 	forceFit: true,
 	height: 500,
-	padding: { left: 50, right: 50, top: 0, bottom: 60 }
+	padding: { left: 50, right: 50, top: 60, bottom: 80 }
 });
 chart.scale({
 	winLoose: {
@@ -36,9 +44,13 @@ chart.scale({
 		}
 	},
 	point: {
+		alias: '积分',
 		min: 0,
 		max: Math.max(TEAMS.length - 1, result.matchCount),
 		tickInterval: 1
+	},
+	goal: {
+		alias: '净胜分'
 	}
 });
 chart.source(dv);
@@ -54,10 +66,14 @@ chart.intervalStack().position('team*point')
 	})
 	.tooltip('point*winLoose*gameWin*gameLoose', (point, winLoose, gameWin, gameLoose) => {
 		return {
-			name: winLoose === 'matchWin' ? '胜(净胜)' : '负(净负)',
+			name: winLoose === 'matchWin' ? '胜(小场胜)' : '负(小场负)',
 			value: winLoose === 'matchWin' ? `${point}(${gameWin})` : `${point}(${gameLoose})`
 		};
 	});
+chart.line().position('team*goal');
+chart.point().position('team*goal');
+chart.axis('point', { title: true })
+chart.axis('goal', { title: { position: 'end' } });
 chart.render();
 
 function weekRangeHandler(evt) {
