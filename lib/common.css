@@ -5,6 +5,7 @@
     --table-header-bg: #eaecf0;
     --success-color: #2BBF30;
     --loose-color: #f5222d;
+    --pending-active-color: rgba(255, 255, 255, .8);
 }
 
 .container--row {
@@ -39,16 +40,14 @@
     font-size: 12px;
 }
 
-.mui-table {
-    border-collapse: collapse;
+.cell__highlight {
+    filter: brightness(0.8);
 }
 
-.focus-rect {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    box-shadow: 0 0 0 2px blue;
-    /* rgba(64, 169, 255, 0.75); */
-    user-select: none;
-    /* opacity: 0; */
+.cell__pending.cell__highlight {
+    background: var(--pending-active-color);
+}
+
+.mui-table {
+    border-collapse: collapse;
 }
