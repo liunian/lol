@@ -8,6 +8,17 @@
     --pending-active-color: rgba(255, 255, 255, .8);
 }
 
+
+@keyframes progress-bar-stripes {
+    from {
+        background-position: 50px 0;
+    }
+
+    to {
+        background-position: 0 0;
+    }
+}
+
 .container--row {
     margin-top: var(--block-space);
     margin-bottom: var(--block-space);
@@ -36,8 +47,12 @@
     background: var(--loose-color);
 }
 
-.cell__pending {
+.cell__playing {
     font-size: 12px;
+    background-color: #fafbfd;
+    background-image: linear-gradient(-45deg,#fff 25%, transparent 25%, transparent 50%, #fff 50%, #fff 75%, transparent 75%, transparent);
+    background-size: 50px 50px;
+    animation: reverse progress-bar-stripes 0.8s linear infinite,animate-positive 2s;
 }
 
 .cell__highlight {
