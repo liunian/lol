@@ -18,6 +18,8 @@ const dv = ds.createView().source(result.rankings.slice(0).reverse());
 dv.transform({
 	type: 'map',
 	callback(row) {
+		row.matchWinRate = row.matchWin / row.matchCount * 100;
+		row.gameWinRate = row.gameWin / (row.gameWin + row.gameLoose) * 100
 		// 净胜场
 		row.goal = row.gameWin - row.gameLoose;
 		return row;
@@ -49,8 +51,23 @@ chart.scale({
 		max: Math.max(TEAMS.length - 1, result.matchCount),
 		tickInterval: 1
 	},
+	winRateType: {
+		formatter(val) {
+			return val === 'matchWinRate' ? '胜率' : '小场胜率';
+		}
+	},
 	goal: {
 		alias: '净胜分'
+	},
+	matchWinRate: {
+		alias: '胜率',
+		min: 0,
+		max: 100
+	},
+	gameWinRate: {
+		alias: '小场胜率',
+		min: 0,
+		max: 100
 	}
 });
 chart.source(dv);
@@ -70,10 +87,18 @@ chart.intervalStack().position('team*point')
 			value: winLoose === 'matchWin' ? `${point}(${gameWin})` : `${point}(${gameLoose})`
 		};
 	});
-chart.line().position('team*goal');
-chart.point().position('team*goal');
-chart.axis('point', { title: true })
-chart.axis('goal', { title: { position: 'end' } });
+
+chart.line().position('team*matchWinRate').tooltip('matchWinRate', rate => ({ name: '胜率', value: `${rate.toFixed(0)}%` })).color('#40a9ff');
+chart.point().position('team*matchWinRate').tooltip('matchWinRate', rate => ({ name: '胜率', value: `${rate.toFixed(0)}%` })).color('#40a9ff');
+chart.axis('matchWinRate', {
+	title: { position: 'end' },
+	label: { formatter: text => `${text}%` }
+});
+
+chart.line().position('team*gameWinRate').tooltip('gameWinRate', rate => ({ name: '小场胜率', value: `${rate.toFixed(0)}%` })).color('#73d13d');
+chart.point().position('team*gameWinRate').tooltip('gameWinRate', rate => ({ name: '小场胜率', value: `${rate.toFixed(0)}%` })).color('#73d13d');
+chart.axis('gameWinRate', false);
+
 chart.render();
 
 function weekRangeHandler(evt) {
