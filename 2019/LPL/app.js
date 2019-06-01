@@ -88,16 +88,16 @@ chart.intervalStack().position('team*point')
 		};
 	});
 
+chart.line().position('team*gameWinRate').tooltip('gameWinRate', rate => ({ name: '小场胜率', value: `${rate.toFixed(0)}%` })).color('#666');
+chart.point().position('team*gameWinRate').tooltip('gameWinRate', rate => ({ name: '小场胜率', value: `${rate.toFixed(0)}%` })).color('#666');
+chart.axis('gameWinRate', false);
+
 chart.line().position('team*matchWinRate').tooltip('matchWinRate', rate => ({ name: '胜率', value: `${rate.toFixed(0)}%` })).color('#40a9ff');
 chart.point().position('team*matchWinRate').tooltip('matchWinRate', rate => ({ name: '胜率', value: `${rate.toFixed(0)}%` })).color('#40a9ff');
 chart.axis('matchWinRate', {
 	title: { position: 'end' },
 	label: { formatter: text => `${text}%` }
 });
-
-chart.line().position('team*gameWinRate').tooltip('gameWinRate', rate => ({ name: '小场胜率', value: `${rate.toFixed(0)}%` })).color('#666');
-chart.point().position('team*gameWinRate').tooltip('gameWinRate', rate => ({ name: '小场胜率', value: `${rate.toFixed(0)}%` })).color('#666');
-chart.axis('gameWinRate', false);
 
 chart.render();
 
