@@ -95,8 +95,8 @@ chart.axis('matchWinRate', {
 	label: { formatter: text => `${text}%` }
 });
 
-chart.line().position('team*gameWinRate').tooltip('gameWinRate', rate => ({ name: '小场胜率', value: `${rate.toFixed(0)}%` })).color('#73d13d');
-chart.point().position('team*gameWinRate').tooltip('gameWinRate', rate => ({ name: '小场胜率', value: `${rate.toFixed(0)}%` })).color('#73d13d');
+chart.line().position('team*gameWinRate').tooltip('gameWinRate', rate => ({ name: '小场胜率', value: `${rate.toFixed(0)}%` })).color('#666');
+chart.point().position('team*gameWinRate').tooltip('gameWinRate', rate => ({ name: '小场胜率', value: `${rate.toFixed(0)}%` })).color('#666');
 chart.axis('gameWinRate', false);
 
 chart.render();
