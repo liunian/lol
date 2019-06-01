@@ -18,8 +18,8 @@ const dv = ds.createView().source(result.rankings.slice(0).reverse());
 dv.transform({
 	type: 'map',
 	callback(row) {
-		row.matchWinRate = row.matchWin / row.matchCount * 100;
-		row.gameWinRate = row.gameWin / (row.gameWin + row.gameLoose) * 100
+		row.matchWinRate = row.matchCount === 0 ? 0 : row.matchWin / row.matchCount * 100;
+		row.gameWinRate = (row.gameWin + row.gameLoose) === 0 ? 0 : row.gameWin / (row.gameWin + row.gameLoose) * 100
 		// 净胜场
 		row.goal = row.gameWin - row.gameLoose;
 		return row;
