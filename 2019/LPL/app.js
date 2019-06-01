@@ -9,6 +9,8 @@ const $week = document.getElementById('J-week');
 const $weekVal = document.getElementById('J-week-val');
 const maxWeek = WEEKS[WEEKS.length - 1];
 
+const getFullTeam = team => `${team} (${TEAMS.find(i => i[0] === team)[1]})`
+
 $week.setAttribute('max', latestWeek);
 $week.value = latestWeek;
 $weekVal.innerText = latestWeek;
@@ -81,19 +83,20 @@ chart.intervalStack().position('team*point')
 			offset: 0
 		};
 	})
-	.tooltip('point*winLoose*gameWin*gameLoose', (point, winLoose, gameWin, gameLoose) => {
+	.tooltip('team*point*winLoose*gameWin*gameLoose', (team,point, winLoose, gameWin, gameLoose) => {
 		return {
+			title: getFullTeam(team),
 			name: winLoose === 'matchWin' ? '胜(小场胜)' : '负(小场负)',
 			value: winLoose === 'matchWin' ? `${point}(${gameWin})` : `${point}(${gameLoose})`
 		};
 	});
 
-chart.line().position('team*gameWinRate').tooltip('gameWinRate', rate => ({ name: '小场胜率', value: `${rate.toFixed(0)}%` })).color('#666');
-chart.point().position('team*gameWinRate').tooltip('gameWinRate', rate => ({ name: '小场胜率', value: `${rate.toFixed(0)}%` })).color('#666');
+chart.line().position('team*gameWinRate').tooltip('team*gameWinRate', (team, rate) => ({ title: getFullTeam(team), name: '小场胜率', value: `${rate.toFixed(0)}%` })).color('#666');
+chart.point().position('team*gameWinRate').tooltip('team*gameWinRate', (team, rate) => ({ title: getFullTeam(team), name: '小场胜率', value: `${rate.toFixed(0)}%` })).color('#666');
 chart.axis('gameWinRate', false);
 
-chart.line().position('team*matchWinRate').tooltip('matchWinRate', rate => ({ name: '胜率', value: `${rate.toFixed(0)}%` })).color('#40a9ff');
-chart.point().position('team*matchWinRate').tooltip('matchWinRate', rate => ({ name: '胜率', value: `${rate.toFixed(0)}%` })).color('#40a9ff');
+chart.line().position('team*matchWinRate').tooltip('team*matchWinRate', (team, rate) => ({ title: getFullTeam(team), name: '胜率', value: `${rate.toFixed(0)}%` })).color('#40a9ff');
+chart.point().position('team*matchWinRate').tooltip('team*matchWinRate', (team, rate) => ({ title: getFullTeam(team), name: '胜率', value: `${rate.toFixed(0)}%` })).color('#40a9ff');
 chart.axis('matchWinRate', {
 	title: { position: 'end' },
 	label: { formatter: text => `${text}%` }
