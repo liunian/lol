@@ -166,3 +166,22 @@ function updateNextMatchInfo(matches, ele) {
 updateNextMatchInfo(MATCHES, document.getElementById('J-cur-next-play-day'));
 
 initTableCellFocus(document.getElementById('J-detail'));
+
+// shcedule
+function showSchedules(matches, onlyTeam) {
+	document.getElementById('J-schedule').innerHTML = generateSchedule(matches, onlyTeam);
+	scrollShowSchedule();
+}
+showSchedules(MATCHES);
+
+// select team
+function initTeamSelect() {
+	const options = fillTeamsSelect(TEAMS);
+	const $selector = document.getElementById('J-teams');
+	$selector.appendChild(options);
+
+	$selector.addEventListener('change', () => {
+		showSchedules(MATCHES, $selector.value);
+	}, false);
+}
+initTeamSelect();

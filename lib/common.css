@@ -66,3 +66,38 @@
 .mui-table {
     border-collapse: collapse;
 }
+
+.schedule--list {
+    margin: 0;
+    padding: 0;
+    max-height: 300px;
+    overflow: auto;
+}
+
+.schedule {
+    padding: 5px 0;
+    list-style: none;
+    color: #2D2F33;
+}
+
+.schedule .time {
+    margin-right: 20px;
+}
+
+.schedule .score {
+    display: inline-block;
+    width: 30px;
+}
+
+.schedule .team {
+    display: inline-block;
+    width: 50px;
+}
+
+.schedule__done .time {
+    color: #a8abb3;
+}
+
+.schedule__running .time {
+    color: #0d8dfc;
+}
