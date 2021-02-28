@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>LPL 2021 Spring 常规赛</title>
+	<link rel="stylesheet" href="https://gw.alipayobjects.com/os/lib/muicss/0.9.41/dist/css/mui.min.css" />
+	<link rel="stylesheet" href="../../lib/common.css" />
+</head>
+<body>
+
+	<header class="mui-appbar mui--z1">
+		<table width="100%">
+			<tr style="vertical-align:middle;">
+				<td class="mui--appbar-height"><div class="mui--text-title">LPL 2021 Spring 常规赛</div></td>
+			</tr>
+		</table>
+	</header>
+
+	<div class="mui-container-fluid container--row">
+		<div class="mui-panel">
+			<form class="mui-form">
+				<label>
+					截止比赛周：
+					<input class="mui--align-middle" type="range" id="J-week" name="volume" min="1" max="1" />
+					<span style="margin-left: 15px;" id="J-week-val">1</span>
+				</label>
+			</form>
+		</div>
+
+		<div class="mui-panel">
+			<div class="panel--header">
+				<span class="mui--text-headline">队伍积分</span>
+
+				<span>
+					最后更新的比赛：<span id="J-last-match">-</span>
+				</span>
+			</div>
+			<div id="ranking"></div>
+		</div>
+
+		<div class="mui-panel" id="J-cur-next-play-day" style="display: none;">
+			<div class="panel--header">
+				<span class="mui--text-headline J-title"></span>
+			</div>
+			<div class="J-con"></div>
+		</div>
+
+		<div class="mui-panel">
+			<div class="panel--header">
+				<span class="mui--text-headline J-title">赛程</span>
+				<span class="mui--pull-right">
+					只看战队
+					<select id="J-teams"></select>
+				</span>
+			</div>
+			<ul id="J-schedule" class="schedule--list">
+		</div>
+		</div>
+
+		<div class="mui-panel">
+			<div class="panel--header">
+				<span class="mui--text-headline">单循环赛</span>
+			</div>
+			<table id="J-detail" class="mui-table mui-table--bordered"></table>
+		</div>
+
+		<div class="mui-panel">
+			这仅是个人根据赛事数据梳理的图表，实际结果以官方数据为准。
+		</div>
+	</div>
+
+	<script src="https://gw.alipayobjects.com/os/lib/antv/g2/3.4.10/dist/g2.min.js"></script>
+	<script src="https://gw.alipayobjects.com/os/lib/antv/data-set/0.10.1/dist/data-set.min.js"></script>
+	<script src="https://gw.alipayobjects.com/os/lib/moment/2.24.0/min/moment.min.js"></script>
+	<script src="../../lib/util.js"></script>
+	<script src="team.js"></script>
+	<script src="spring-data.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
