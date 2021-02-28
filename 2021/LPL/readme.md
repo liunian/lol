@@ -1,4 +1,4 @@
-- [2019赛季英雄联盟职业联赛正式规则](https://lol.qq.com/news/detail.shtml?type=1&docid=12073407355665218683)
+- [2021赛季英雄联盟职业联赛正式规则](https://lol.qq.com/news/detail.shtml?type=1&docid=12073407355665218683)
 - match：一场比赛
 - game：一场比赛中的一局
 - [春季赛常规赛](https://liunian.github.io/lol/2021/LPL/spring.html)
