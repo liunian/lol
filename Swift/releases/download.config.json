@@ -1,0 +1,9 @@
+{
+	"targetPath": "../../2022/LPL/summer-data.js",
+    "url" :"https://lol.fandom.com/wiki/LPL/2022_Season/Summer_Season",
+    "match" : ".matchlist > tbody > .ml-row",
+    "dateTime" : ".matchlist-time-cell .TimeInLocal",
+    "teamA": ".matchlist-team1 .teamname",
+    "teamB": ".matchlist-team2 .teamname",
+    "score": ".matchlist-score"
+}

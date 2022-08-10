@@ -1,0 +1,4 @@
+- [2022赛季英雄联盟职业联赛正式规则](https://lol.qq.com/news/detail.shtml?type=1&docid=16161886509984835765)
+- match：一场比赛
+- game：一场比赛中的一局
+- 夏季赛常规赛
